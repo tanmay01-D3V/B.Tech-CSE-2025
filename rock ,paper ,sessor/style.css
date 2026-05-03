@@ -1,0 +1,324 @@
+/*
+====================================================================
+ROCK PAPER SCISSORS GAME - CSS FILE
+====================================================================
+This CSS file contains all styling for the game.
+It controls:
+- Layout (positioning elements on the page)
+- Colors and gradients
+- Animations and transitions
+- Responsive design for different screen sizes
+====================================================================
+*/
+
+/* 
+Universal selector "*" targets ALL elements on the page
+Resets default browser spacing that causes inconsistencies
+*/
+* {
+    margin: 0;      /* Remove default margin (space outside element) */
+    padding: 0;     /* Remove default padding (space inside element) */
+    box-sizing: border-box;  /* Include padding/border in width calculations */
+}
+
+/* 
+BODY STYLING
+The body element is the background/container for entire page
+*/
+body {
+    /* Font family: primary font with fallbacks if first isn't available */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Gradient background from purple to darker purple at 135-degree angle */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    /* Minimum height = full viewport height (100vh = 100% of view height) */
+    min-height: 100vh;
+    
+    /* Flexbox layout - centers content both horizontally and vertically */
+    display: flex;
+    justify-content: center;    /* Centers horizontally */
+    align-items: center;        /* Centers vertically */
+    
+    /* Padding: space inside body on all sides */
+    padding: 20px;
+}
+
+/*
+CONTAINER STYLING
+Container class limits width on large screens for better readability
+*/
+.container {
+    width: 100%;         /* Full width of parent */
+    max-width: 600px;    /* Don't exceed 600px wide even on large screens */
+}
+
+/*
+GAME CONTAINER STYLING
+Main white card that holds all the game elements
+*/
+.game-container {
+    background: white;           /* White background */
+    border-radius: 20px;         /* Rounded corners (20px radius) */
+    
+    /* Box shadow: creates depth effect
+       0 = horizontal offset
+       20px = vertical offset
+       60px = blur radius (how soft the shadow is)
+       rgba(0,0,0,0.3) = black with 30% opacity */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    
+    padding: 40px;               /* Space inside the container */
+    animation: slideIn 0.5s ease-out;  /* Use slideIn animation on load */
+}
+
+/*
+KEYFRAMES: Define animation steps
+@keyframes creates reusable animations that can be referenced
+animation-name: slideIn
+animation-duration: 0.5s (half second)
+animation-timing: ease-out (starts fast, ends slow)
+*/
+@keyframes slideIn {
+    /* Starting state (0% = beginning of animation) */
+    from {
+        opacity: 0;              /* Invisible (0% opacity) */
+        transform: translateY(30px);  /* Move down 30 pixels */
+    }
+    /* Ending state (100% = end of animation) */
+    to {
+        opacity: 1;              /* Fully visible (100% opacity) */
+        transform: translateY(0); /* Back to original position */
+    }
+}
+
+/*
+H1 STYLING - Main game title
+*/
+h1 {
+    text-align: center;      /* Center align text */
+    color: #667eea;          /* Purple color */
+    margin-bottom: 30px;     /* Space below title */
+    font-size: 2.5em;        /* 2.5 times the default font size */
+}
+
+/*
+SCORE BOARD STYLING
+Uses flexbox to arrange score items side by side
+*/
+.score-board {
+    display: flex;           /* Enable flexbox layout */
+    justify-content: space-around;  /* Distribute items evenly with space around them */
+    margin-bottom: 40px;     /* Space below score board */
+    gap: 20px;               /* Space between score items */
+}
+
+/*
+SCORE ITEM STYLING - Individual score display box
+*/
+.score-item {
+    flex: 1;                 /* Take equal space among flex items */
+    text-align: center;      /* Center text inside */
+    
+    /* Gradient background: same as body gradient */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    padding: 20px;           /* Space inside the box */
+    border-radius: 15px;     /* Rounded corners */
+    color: white;            /* White text */
+}
+
+.score-item h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.score {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.choices-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+
+.choice-display {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border: 2px solid #e0e0e0;
+}
+
+.choice-display h3 {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.choice-icon {
+    font-size: 3em;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vs {
+    font-weight: bold;
+    color: #667eea;
+    font-size: 1.2em;
+    padding: 0 10px;
+}
+
+.result-section {
+    text-align: center;
+    margin-bottom: 30px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #667eea;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.result-text.win {
+    color: #4caf50;
+}
+
+.result-text.lose {
+    color: #f44336;
+}
+
+.result-text.tie {
+    color: #ff9800;
+}
+
+.buttons-section {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/*
+CHOICE BUTTON STYLING - Rock, Paper, Scissors buttons
+*/
+.choice-btn {
+    flex: 1;                 /* Take equal space */
+    min-width: 100px;        /* Minimum button width */
+    padding: 15px;           /* Space inside button */
+    border: none;            /* Remove default border */
+    border-radius: 12px;     /* Rounded corners */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  /* Gradient */
+    color: white;            /* White text */
+    font-size: 1em;          /* Normal font size */
+    font-weight: bold;       /* Bold text */
+    cursor: pointer;         /* Show pointer cursor on hover */
+    
+    /* Smooth transition for all properties over 0.3 seconds */
+    transition: all 0.3s ease;
+    
+    /* Flexbox to arrange icon and text vertically */
+    display: flex;
+    flex-direction: column;  /* Stack items vertically */
+    align-items: center;     /* Center items */
+    gap: 8px;                /* Space between icon and text */
+}
+
+/*
+.choice-btn:hover - Styles applied when mouse hovers over button
+*/
+.choice-btn:hover {
+    transform: translateY(-5px);  /* Move up 5 pixels on hover */
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);  /* Add shadow on hover */
+}
+
+/*
+.choice-btn:active - Styles applied while button is being clicked
+*/
+.choice-btn:active {
+    transform: translateY(-2px);  /* Move up only 2 pixels while clicking */
+}
+
+.choice-btn .icon {
+    font-size: 1.8em;
+}
+
+.choice-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.reset-btn {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.reset-btn:active {
+    transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .game-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .choice-btn {
+        padding: 12px;
+        font-size: 0.9em;
+    }
+
+    .choice-btn .icon {
+        font-size: 1.5em;
+    }
+
+    .choice-icon {
+        font-size: 2.5em;
+    }
+
+    .score {
+        font-size: 2em;
+    }
+}

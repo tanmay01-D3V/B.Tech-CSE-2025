@@ -1,0 +1,125 @@
+ <!-- 
+    ====================================================================
+    ROCK PAPER SCISSORS GAME - HTML FILE
+    ====================================================================
+    This HTML file creates the structure/layout of the game.
+    It defines:
+    - The visual elements (buttons, score display, etc.)
+    - IDs for JavaScript to target and control elements
+    - Event handlers (onclick) to trigger game functions
+    ====================================================================
+-->
+
+<!DOCTYPE html>
+<!-- DOCTYPE declares this is an HTML5 document -->
+<html lang="en">
+<!-- <html> is the root element, lang="en" sets the language to English -->
+<head>
+    <!-- <head> contains metadata and links to external files -->
+    
+    <!-- Character encoding: UTF-8 allows special characters and emojis -->
+    <meta charset="UTF-8">
+    
+    <!-- Viewport settings for responsive design on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title shown in browser tab -->
+    <title>Rock Paper Scissors Game</title>
+    
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <body> contains all visible content on the page -->
+    
+    <!-- Main container div with max-width for better layout on large screens -->
+    <div class="container">
+        <!-- Game container - the white card holding all game elements -->
+        <div class="game-container">
+            <!-- Game title with emoji -->
+            <h1>🎮 Rock Paper Scissors</h1>
+            
+            <!-- Score board section - shows current scores -->
+            <div class="score-board">
+                <!-- Player's score container -->
+                <div class="score-item">
+                    <h2>You</h2>
+                    <!-- id="playerScore" allows JavaScript to update this element -->
+                    <p class="score" id="playerScore">0</p>
+                </div>
+                
+                <!-- Computer's score container -->
+                <div class="score-item">
+                    <h2>Computer</h2>
+                    <!-- id="computerScore" allows JavaScript to update this element -->
+                    <p class="score" id="computerScore">0</p>
+                </div>
+            </div>
+
+            <!-- Choices display section - shows what player and computer chose -->
+            <div class="choices-section">
+                <!-- Your choice display box -->
+                <div class="choice-display">
+                    <h3>Your Choice</h3>
+                    <!-- id="playerChoice" - JavaScript will put emoji here (🪨, 📄, or ✂️) -->
+                    <!-- Initially shows "-" until a move is made -->
+                    <p class="choice-icon" id="playerChoice">-</p>
+                </div>
+                
+                <!-- "VS" text between the two choices -->
+                <div class="vs">VS</div>
+                
+                <!-- Computer's choice display box -->
+                <div class="choice-display">
+                    <h3>Computer's Choice</h3>
+                    <!-- id="computerChoice" - JavaScript will put emoji here -->
+                    <!-- Initially shows "-" until a move is made -->
+                    <p class="choice-icon" id="computerChoice">-</p>
+                </div>
+            </div>
+
+            <!-- Result display section - shows who won -->
+            <div class="result-section">
+                <!-- id="resultText" - JavaScript updates this with win/lose/tie messages -->
+                <!-- Initially shows "Make your move!" -->
+                <p class="result-text" id="resultText">Make your move!</p>
+            </div>
+
+            <!-- Buttons section - three buttons for player to choose rock, paper, or scissors -->
+            <div class="buttons-section">
+                
+                <!-- Rock button -->
+                <!-- onclick="playerPlay('rock')" - calls playerPlay() function with 'rock' when clicked -->
+                <button class="choice-btn" id="rockBtn" onclick="playerPlay('rock')">
+                    <!-- Icon span for the emoji -->
+                    <span class="icon">🪨</span>
+                    <!-- Text label -->
+                    <span>Rock</span>
+                </button>
+                
+                <!-- Paper button -->
+                <!-- onclick="playerPlay('paper')" - calls playerPlay() function with 'paper' when clicked -->
+                <button class="choice-btn" id="paperBtn" onclick="playerPlay('paper')">
+                    <span class="icon">📄</span>
+                    <span>Paper</span>
+                </button>
+                
+                <!-- Scissors button -->
+                <!-- onclick="playerPlay('scissors')" - calls playerPlay() function with 'scissors' when clicked -->
+                <button class="choice-btn" id="scissorsBtn" onclick="playerPlay('scissors')">
+                    <span class="icon">✂️</span>
+                    <span>Scissors</span>
+                </button>
+            </div>
+
+            <!-- Reset button - resets scores and game state -->
+            <!-- onclick="resetGame()" - calls resetGame() function to start fresh -->
+            <button class="reset-btn" onclick="resetGame()">Reset Game</button>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file that contains all the game logic -->
+    <!-- This must be at the end of body so HTML elements are loaded first -->
+    <script src="script.js"></script>
+</body>
+</html>
